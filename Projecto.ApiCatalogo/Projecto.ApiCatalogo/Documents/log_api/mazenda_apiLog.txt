@@ -1,0 +1,99 @@
+Information: 14 - Now listening on: http://localhost:5161
+Information: 0 - Application started. Press Ctrl+C to shut down.
+Information: 0 - Hosting environment: Development
+Information: 0 - Content root path: /Users/mojavestudio/RiderProjects/Projecto.ApiCatalogo/Projecto.ApiCatalogo
+Warning: 3 - Failed to determine the https port for redirect.
+Information: 0 - ## Executando -> OnActionExecuting
+Information: 0 - ###############################################
+Information: 0 - 19:09:46
+Information: 0 - ModelState : True
+Information: 0 - ###############################################
+Information: 0 - ================== GET api/productos ============================
+Information: 20101 - Executed DbCommand (56ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProductoId`, `p`.`CategotiaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImagemUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Productos` AS `p`
+Information: 0 - ## Executando -> OnActionExecuted
+Information: 0 - ###############################################
+Information: 0 - 19:09:48
+Information: 0 - Status code : 200
+Information: 0 - ###############################################
+Information: 0 - ================== GET api/productos com o id = '1' ============================
+Information: 20101 - Executed DbCommand (35ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProductoId`, `p`.`CategotiaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImagemUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Productos` AS `p`
+WHERE `p`.`ProductoId` = @__id_0
+LIMIT 1
+Information: 0 - ================== GET api/productos com o id = '2' ============================
+Information: 20101 - Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProductoId`, `p`.`CategotiaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImagemUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Productos` AS `p`
+WHERE `p`.`ProductoId` = @__id_0
+LIMIT 1
+Information: 0 - ================== GET api/productos com o id = '22' ============================
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProductoId`, `p`.`CategotiaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImagemUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Productos` AS `p`
+WHERE `p`.`ProductoId` = @__id_0
+LIMIT 1
+Information: 0 - ================== GET api/productos id = '22'NOT FOUND============================
+Information: 0 - Application is shutting down...
+Information: 14 - Now listening on: http://localhost:5161
+Information: 0 - Application started. Press Ctrl+C to shut down.
+Information: 0 - Hosting environment: Development
+Information: 0 - Content root path: /Users/mojavestudio/RiderProjects/Projecto.ApiCatalogo/Projecto.ApiCatalogo
+Warning: 3 - Failed to determine the https port for redirect.
+Information: 0 - ## Executando -> OnActionExecuting
+Information: 0 - ###############################################
+Information: 0 - 19:13:50
+Information: 0 - ModelState : True
+Information: 0 - ###############################################
+Information: 0 - ================== GET api/productos ============================
+Information: 20101 - Executed DbCommand (61ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProductoId`, `p`.`CategotiaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImagemUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Productos` AS `p`
+Information: 0 - ## Executando -> OnActionExecuted
+Information: 0 - ###############################################
+Information: 0 - 19:13:54
+Information: 0 - Status code : 200
+Information: 0 - ###############################################
+Information: 0 - ## Executando -> OnActionExecuting
+Information: 0 - ###############################################
+Information: 0 - 19:14:13
+Information: 0 - ModelState : True
+Information: 0 - ###############################################
+Information: 0 - ================== GET api/productos ============================
+Information: 20101 - Executed DbCommand (393ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProductoId`, `p`.`CategotiaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImagemUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Productos` AS `p`
+Information: 0 - ## Executando -> OnActionExecuted
+Information: 0 - ###############################################
+Information: 0 - 19:14:14
+Information: 0 - Status code : 200
+Information: 0 - ###############################################
+Information: 0 - ## Executando -> OnActionExecuting
+Information: 0 - ###############################################
+Information: 0 - 19:14:15
+Information: 0 - ModelState : True
+Information: 0 - ###############################################
+Information: 0 - ================== GET api/productos ============================
+Information: 20101 - Executed DbCommand (203ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProductoId`, `p`.`CategotiaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImagemUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Productos` AS `p`
+Information: 0 - ## Executando -> OnActionExecuted
+Information: 0 - ###############################################
+Information: 0 - 19:14:15
+Information: 0 - Status code : 200
+Information: 0 - ###############################################
+Information: 0 - ================== GET api/productos com o id = '2' ============================
+Information: 20101 - Executed DbCommand (32ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProductoId`, `p`.`CategotiaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImagemUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Productos` AS `p`
+WHERE `p`.`ProductoId` = @__id_0
+LIMIT 1
+Information: 0 - ================== GET api/productos com o id = '33' ============================
+Information: 20101 - Executed DbCommand (71ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProductoId`, `p`.`CategotiaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImagemUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Productos` AS `p`
+WHERE `p`.`ProductoId` = @__id_0
+LIMIT 1
+Information: 0 - ================== GET api/productos id = '33'NOT FOUND============================
