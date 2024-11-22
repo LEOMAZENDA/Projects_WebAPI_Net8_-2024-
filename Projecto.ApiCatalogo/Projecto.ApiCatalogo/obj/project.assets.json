@@ -2580,13 +2580,12 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mojavestudio/RiderProjects/Projecto.ApiCatalogo/Projecto.ApiCatalogo/Projecto.ApiCatalogo.csproj",
+      "projectUniqueName": "/Users/mojavestudio/aulaMacoratAPI/Projects_WebAPI_Net8_-2024-/Projecto.ApiCatalogo/Projecto.ApiCatalogo/Projecto.ApiCatalogo.csproj",
       "projectName": "Projecto.ApiCatalogo",
-      "projectPath": "/Users/mojavestudio/RiderProjects/Projecto.ApiCatalogo/Projecto.ApiCatalogo/Projecto.ApiCatalogo.csproj",
+      "projectPath": "/Users/mojavestudio/aulaMacoratAPI/Projects_WebAPI_Net8_-2024-/Projecto.ApiCatalogo/Projecto.ApiCatalogo/Projecto.ApiCatalogo.csproj",
       "packagesPath": "/Users/mojavestudio/.nuget/packages/",
-      "outputPath": "/Users/mojavestudio/RiderProjects/Projecto.ApiCatalogo/Projecto.ApiCatalogo/obj/",
+      "outputPath": "/Users/mojavestudio/aulaMacoratAPI/Projects_WebAPI_Net8_-2024-/Projecto.ApiCatalogo/Projecto.ApiCatalogo/obj/",
       "projectStyle": "PackageReference",
-      "UsingMicrosoftNETSdk": false,
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
