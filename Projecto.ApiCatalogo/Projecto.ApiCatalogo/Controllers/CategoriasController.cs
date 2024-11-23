@@ -8,13 +8,13 @@ namespace Projecto.ApiCatalogo.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CategoriasController : ControllerBase 
+public class CategoriasController : ControllerBase
 {
-    private readonly IRepository<Categoria> _repository;
-    private readonly  ILogger<CategoriasController> _logger;
-    public CategoriasController(ICategoriaRepository repository, ILogger<CategoriasController> ILogger)
+    private readonly IUnitOfWork _uniyOfWork;
+    private readonly ILogger<CategoriasController> _logger;
+    public CategoriasController(IUnitOfWork IUnitOfWork, ILogger<CategoriasController> ILogger)
     {
-        _repository = repository;
+        _uniyOfWork = IUnitOfWork;
         _logger = ILogger;
     }
 
@@ -22,13 +22,14 @@ public class CategoriasController : ControllerBase
     public ActionResult<IEnumerable<Categoria>> Get()
     {
         //throw new Exception("Exceção ao retornar a categoria pelo id");
-        var categorias = _repository.GetAll();
-        
-        if (categorias is null) {
+        var categorias = _uniyOfWork.CategoriaRepository.GetAll();
+
+        if (categorias is null)
+        {
             _logger.LogWarning($"Categorias não encontradas...");
             return NotFound($"Categorias não encontradas...");
         }
-        
+
         return Ok(categorias);
     }
 
@@ -36,23 +37,26 @@ public class CategoriasController : ControllerBase
     public ActionResult<Categoria> Get(int id)
     {
         // throw new Exception("Exceção ao retornar a categoria pelo id");
-        var categorias = _repository.Get(c => c.CategoriaId == id);
-        if (categorias is null) {
+        var categorias = _uniyOfWork.CategoriaRepository.Get(c => c.CategoriaId == id);
+        if (categorias is null)
+        {
             _logger.LogInformation($"Categoria com o id = {id} não encontrada...");
             return NotFound($"Categoria com o id = {id} não encontrada...");
         }
         return Ok(categorias);
     }
- 
+
     [HttpPost]
     public ActionResult<Categoria> Post(Categoria categoria)
     {
-        if (categoria is null) {
+        if (categoria is null)
+        {
             _logger.LogInformation($"Dados Inválidos...");
             return BadRequest($"Dados Inválidos...");
         }
 
-        var categoriaCriada = _repository.Create(categoria);
+        var categoriaCriada = _uniyOfWork.CategoriaRepository.Create(categoria);
+        _uniyOfWork.Commit();
 
         return new CreatedAtRouteResult("ObterCategoria",
             new { id = categoriaCriada.CategoriaId }, categoriaCriada);
@@ -62,30 +66,36 @@ public class CategoriasController : ControllerBase
     [HttpPut("{id:int}")]
     public ActionResult<Categoria> Put(int id, Categoria categoria)
     {
-        if (id != categoria.CategoriaId) {
+        if (id != categoria.CategoriaId)
+        {
             _logger.LogInformation($"Dados inválidos. Verifique por favor...");
             return BadRequest($"Dados inválidos. Verifique por favor...");
         }
+
+        _uniyOfWork.CategoriaRepository.Update(categoria);
+        _uniyOfWork.Commit();
         
-        _repository.Update(categoria);
         return Ok(categoria);
     }
 
     [HttpDelete("{id:int}")]
     public ActionResult Delete(int id)
     {
-        var categoria = _repository.Get(c => c.CategoriaId == id);
+        var categoria = _uniyOfWork.CategoriaRepository.Get(c => c.CategoriaId == id);
 
-        if (categoria is null) {
+        if (categoria is null)
+        {
             _logger.LogInformation($"Categoria com o id = {id} não encontrada...");
             return NotFound($"Categoria com o id = {id} não encontrada...");
         }
 
-        var categoriaRemovida = _repository.Delete(categoria);
+        var categoriaRemovida = _uniyOfWork.CategoriaRepository.Delete(categoria);
+        _uniyOfWork.Commit();
+
         return Ok(categoriaRemovida);
     }
-    
-    
+
+
     // [HttpGet("LerArquivoConfiguracao")]
     // public string GetValores()
     // {
@@ -94,7 +104,7 @@ public class CategoriasController : ControllerBase
     //     var secao1 = _configuration["secao1:chave2"];
     //     return $"Chave1 = {valor1}  \nChave2 = {valor2} \nSeção1 => Chave2 = {secao1}";
     // }
-    
+
     // [HttpGet("UsandoFromServices/{nome}")]
     // public ActionResult<string> GetUsaudacaoFromServices([FromServices] IMeuServico meuServico, string nome)
     // {

@@ -7,7 +7,6 @@ using Projecto.ApiCatalogo.Filter;
 using Projecto.ApiCatalogo.Logging;
 using Projecto.ApiCatalogo.Repositories._CategoriaRepository;
 using Projecto.ApiCatalogo.Repositories._ProductoRepository;
-using Projecto.ApiCatalogo.Repositories.CategoriaRepository;
 using Projecto.ApiCatalogo.Repositories.GenericRepository;
 using Projecto.ApiCatalogo.Services;
 
@@ -38,6 +37,7 @@ builder.Services.AddTransient<IMeuServico, MeuServico>(); //AddTransient indica 
 builder.Services.AddScoped<ApiLoggerFilter>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>)); // AddScoped seguifica que vai criar uma instancia unica (pra ser usado em todos os repositorios) 
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 
