@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Projecto.ApiCatalogo.DTOs;
+using Projecto.ApiCatalogo.Extensions;
 using Projecto.ApiCatalogo.Models;
-using Projecto.ApiCatalogo.Repositories._CategoriaRepository;
 using Projecto.ApiCatalogo.Repositories.GenericRepository;
 
 
@@ -19,67 +20,79 @@ public class CategoriasController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Categoria>> Get()
+    public ActionResult<IEnumerable<CategoriaDTO>> Get()
     {
         //throw new Exception("Exceção ao retornar a categoria pelo id");
         var categorias = _uniyOfWork.CategoriaRepository.GetAll();
 
         if (categorias is null)
         {
-            _logger.LogWarning($"Categorias não encontradas...");
-            return NotFound($"Categorias não encontradas...");
+            _logger.LogWarning($"Não existem categorias...");
+            return NotFound($"Não existem categorias...");
         }
 
-        return Ok(categorias);
+        var categoriasDTto = categorias.ToCategoriaDTOList();
+
+        return Ok(categoriasDTto);
     }
 
     [HttpGet("{id:int:min(1)}", Name = "ObterCategoria")]
-    public ActionResult<Categoria> Get(int id)
+    public ActionResult<CategoriaDTO> Get(int id)
     {
         // throw new Exception("Exceção ao retornar a categoria pelo id");
-        var categorias = _uniyOfWork.CategoriaRepository.Get(c => c.CategoriaId == id);
-        if (categorias is null)
+        var categoria = _uniyOfWork.CategoriaRepository.Get(c => c.CategoriaId == id);
+        if (categoria is null)
         {
             _logger.LogInformation($"Categoria com o id = {id} não encontrada...");
             return NotFound($"Categoria com o id = {id} não encontrada...");
         }
-        return Ok(categorias);
+
+        var categoriaDto = categoria.ToCategoriaDTO();
+        return Ok(categoriaDto);
     }
 
     [HttpPost]
-    public ActionResult<Categoria> Post(Categoria categoria)
+    public ActionResult<CategoriaDTO> Post(CategoriaDTO categoriaDto)
     {
-        if (categoria is null)
+        if (categoriaDto is null)
         {
             _logger.LogInformation($"Dados Inválidos...");
             return BadRequest($"Dados Inválidos...");
         }
 
+        var categoria = categoriaDto.ToCategoria();
+
         var categoriaCriada = _uniyOfWork.CategoriaRepository.Create(categoria);
         _uniyOfWork.Commit();
 
+        var novaCategoriaDto = categoriaCriada.ToCategoriaDTO();
+
         return new CreatedAtRouteResult("ObterCategoria",
-            new { id = categoriaCriada.CategoriaId }, categoriaCriada);
+            new { id = novaCategoriaDto.CategoriaId }, novaCategoriaDto);
     }
 
 
     [HttpPut("{id:int}")]
-    public ActionResult<Categoria> Put(int id, Categoria categoria)
+    public ActionResult<CategoriaDTO> Put(int id, CategoriaDTO categoriaDto)
     {
-        if (id != categoria.CategoriaId)
+        if (id != categoriaDto.CategoriaId)
         {
             _logger.LogInformation($"Dados inválidos. Verifique por favor...");
             return BadRequest($"Dados inválidos. Verifique por favor...");
         }
-
-        _uniyOfWork.CategoriaRepository.Update(categoria);
-        _uniyOfWork.Commit();
         
-        return Ok(categoria);
+        var categoria = categoriaDto.ToCategoria();
+
+       var categoriaActualizada = _uniyOfWork.CategoriaRepository.Update(categoria);
+        _uniyOfWork.Commit();
+
+        var categoriaActualizadaDto = categoriaActualizada.ToCategoriaDTO();
+
+        return Ok(categoriaActualizadaDto);
     }
 
     [HttpDelete("{id:int}")]
-    public ActionResult Delete(int id)
+    public ActionResult<CategoriaDTO> Delete(int id)
     {
         var categoria = _uniyOfWork.CategoriaRepository.Get(c => c.CategoriaId == id);
 
@@ -92,7 +105,9 @@ public class CategoriasController : ControllerBase
         var categoriaRemovida = _uniyOfWork.CategoriaRepository.Delete(categoria);
         _uniyOfWork.Commit();
 
-        return Ok(categoriaRemovida);
+        var categoriaRemovidaDto = categoriaRemovida.ToCategoriaDTO();
+
+        return Ok(categoriaRemovidaDto);
     }
 
 
