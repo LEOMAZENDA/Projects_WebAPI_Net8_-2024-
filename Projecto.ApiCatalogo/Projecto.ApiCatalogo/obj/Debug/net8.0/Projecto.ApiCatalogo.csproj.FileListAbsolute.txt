@@ -219,3 +219,5 @@
 /Users/mojavestudio/aulaMacoratAPI/Projects_WebAPI_Net8_-2024-/Projecto.ApiCatalogo/Projecto.ApiCatalogo/obj/Debug/net8.0/Projecto.ApiCatalogo.pdb
 /Users/mojavestudio/aulaMacoratAPI/Projects_WebAPI_Net8_-2024-/Projecto.ApiCatalogo/Projecto.ApiCatalogo/obj/Debug/net8.0/Projecto.ApiCatalogo.genruntimeconfig.cache
 /Users/mojavestudio/aulaMacoratAPI/Projects_WebAPI_Net8_-2024-/Projecto.ApiCatalogo/Projecto.ApiCatalogo/obj/Debug/net8.0/ref/Projecto.ApiCatalogo.dll
+/Users/mojavestudio/aulaMacoratAPI/Projects_WebAPI_Net8_-2024-/Projecto.ApiCatalogo/Projecto.ApiCatalogo/bin/Debug/net8.0/AutoMapper.dll
+/Users/mojavestudio/aulaMacoratAPI/Projects_WebAPI_Net8_-2024-/Projecto.ApiCatalogo/Projecto.ApiCatalogo/bin/Debug/net8.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll

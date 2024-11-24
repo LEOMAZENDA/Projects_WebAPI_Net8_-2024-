@@ -2,6 +2,7 @@ using System.Reflection;
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Projecto.ApiCatalogo.Context;
+using Projecto.ApiCatalogo.DTOs.Mapping;
 using Projecto.ApiCatalogo.Extensions;
 using Projecto.ApiCatalogo.Filter;
 using Projecto.ApiCatalogo.Logging;
@@ -27,7 +28,7 @@ builder.Services.AddControllers(optns =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-string mysqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+string? mysqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(option =>
     option.UseMySql(mysqlConnection, ServerVersion.AutoDetect(mysqlConnection)));
@@ -46,6 +47,7 @@ builder.Logging.AddProvider(new CustumerLoggerProvider(new CustumerLoggerProvide
     LogLevel = LogLevel.Information
 }));
 
+builder.Services.AddAutoMapper(typeof(ProductoDTOMappingProfile));
 
 var app = builder.Build();
 
